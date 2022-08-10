@@ -3,16 +3,12 @@ import 'dart:convert';
 import '../../domain/entities/cat_facts_entity.dart';
 
 class CatFactsDto extends CatFacts {
-  @override
-  final String fact;
-  final int length;
-
-  CatFactsDto({required this.fact,required this.length}) : super(fact: fact, lenght:length);
+  CatFactsDto({required super.fact, required super.lenght});
 
   factory CatFactsDto.fromMap(Map<String, dynamic> map) {
     return CatFactsDto(
       fact: map['fact'] ?? '',
-      length: map['lenght'] ?? 0,
+      lenght: map['lenght'] ?? 0,
     );
   }
 
@@ -20,7 +16,7 @@ class CatFactsDto extends CatFacts {
     final result = <String, dynamic>{};
 
     result.addAll({'fact': fact});
-    //result.addAll({'lenght': length});
+    result.addAll({'lenght': lenght});
 
     return result;
   }

@@ -16,10 +16,11 @@ void main() {
   group(GetFactsDataSource, () {
     test('Should return a list of cat facts', (() async {
       final request = Request(
-          headers: const {'test': 'test'},
-          method: 'get',
-          timeout: const Duration(seconds: 30),
-          uri: Uri.parse('https://catfact.ninja/fact'));
+        headers: const {'test': 'test'},
+        method: 'get',
+        timeout: const Duration(seconds: 30),
+        uri: Uri.parse('https://catfact.ninja/fact'),
+      );
 
       when((() => uno.get(any()))).thenAnswer(
         (_) async => Response(
