@@ -20,8 +20,7 @@ class SendPostDataSource implements ISendPostDataSource {
 
     try {
       uno
-          .post(
-              '${uno.baseURL}?title=${entity.title}&body=${entity.body}')
+          .post('${uno.baseURL}?title=${entity.title}&body=${entity.body}')
           .then(
             (value) async => list.add(
               PostEntityDto.fromMap(value.data),

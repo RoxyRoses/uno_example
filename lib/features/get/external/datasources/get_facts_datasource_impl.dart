@@ -20,6 +20,8 @@ class GetFactsDataSource implements IGetFactsDataSource {
         facts.add(
           CatFactsDto.fromMap(response.data),
         );
+      } else {
+        throw Exception();
       }
     } catch (e) {
       throw Exception(e);

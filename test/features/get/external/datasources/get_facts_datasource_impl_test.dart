@@ -34,5 +34,34 @@ void main() {
       final result = dataSource.getFacts();
       expect(result, completes);
     }));
+
+    test('Should return an error if code its not 200', () async {
+      final request = Request(
+        headers: const {'test': 'test'},
+        method: 'get',
+        timeout: const Duration(seconds: 30),
+        uri: Uri.parse(''),
+      );
+
+      when(() => uno.get(any())).thenAnswer(
+        (_) async => Response(
+            headers: const {'test': 'test'},
+            data: null,
+            status: 401,
+            request: request),
+      );
+
+      final result = dataSource.getFacts();
+
+      expect(result, throwsA(isA<Exception>()));
+    });
+
+    test('Should return an exception if error on uno ', () async {
+      when(() => uno.get(any())).thenThrow(Exception());
+
+      final result = dataSource.getFacts();
+
+      expect(result, throwsA(isA<Exception>()));
+    });
   });
 }
