@@ -14,7 +14,7 @@ void main() {
   final dataSource = GetFactsDataSource(uno);
 
   group(GetFactsDataSource, () {
-    test('Should return a list of cat facts', (() async {
+    test('Should use a get method', (() async {
       final request = Request(
         headers: const {'test': 'test'},
         method: 'get',

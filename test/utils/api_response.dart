@@ -6,3 +6,4 @@ const api = """{
 const postResponse = """{
     "id": 101
 }""";
+

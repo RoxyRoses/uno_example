@@ -16,7 +16,7 @@ void main() {
   final entity = PostEntity(body: 'Hello', title: 'post test');
 
   group(SendPostDataSource, () {
-    test('Should send a post', (() async {
+    test('Should use a post method', (() async {
       final request = Request(
         headers: const {'test': 'test'},
         method: 'post',

@@ -3,13 +3,14 @@ import 'dart:convert';
 import '../../domain/entities/post_entity.dart';
 
 class PostEntityDto extends PostEntity {
-  PostEntityDto({required super.title, required super.body, super.id});
+  PostEntityDto({required super.title, required super.body, super.id, super.userId});
 
   factory PostEntityDto.fromMap(Map<String, dynamic> map) {
     return PostEntityDto(
       title: map['title'] ?? '',
       body: map['body'] ?? '',
       id: map['id'] ?? 0,
+      userId: map['userId'] ?? 0,
     );
   }
 
@@ -19,6 +20,7 @@ class PostEntityDto extends PostEntity {
     result.addAll({'title': title});
     result.addAll({'body': body});
     result.addAll({'id': id});
+    result.addAll({'userId': userId});
 
     return result;
   }

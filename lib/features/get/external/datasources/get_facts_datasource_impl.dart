@@ -11,15 +11,20 @@ class GetFactsDataSource implements IGetFactsDataSource {
 
   @override
   Future<List<CatFacts>> getFacts() async {
-    final response = await uno.get('https://catfact.ninja/fact');
     List<CatFacts> facts = [];
 
-    if (response.status == 200) {
-      //CatFacts fact = CatFactsDto.fromMap(response.data);
-      facts.add(CatFactsDto.fromMap(response.data));
-      return facts;
-    } else {
-      throw Exception();
+    try {
+      final response = await uno.get('https://catfact.ninja/fact');
+
+      if (response.status == 200) {
+        facts.add(
+          CatFactsDto.fromMap(response.data),
+        );
+      }
+    } catch (e) {
+      throw Exception(e);
     }
+
+    return facts;
   }
 }
