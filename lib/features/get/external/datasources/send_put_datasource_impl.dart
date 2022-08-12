@@ -17,8 +17,9 @@ class SendPutDataSource implements ISendPutDataSource{
         headers: {'teste': 'teste'});
 
         try {
-          uno
-          .put('${uno.baseURL}${entity.id}').catchError((onError){
+          uno(method: 'put',
+          url: '${uno.baseURL}${entity.id}')
+         .catchError((onError){
             if(onError.Response.status != 200){
               throw Exception();
             }
