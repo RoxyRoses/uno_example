@@ -1,6 +1,6 @@
 class CatFacts{
   final String fact;
-  final int lenght;
+  final int length;
 
-  CatFacts({ required this.fact, required this.lenght});
+  CatFacts({ required this.fact, required this.length});
 }

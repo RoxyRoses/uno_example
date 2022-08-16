@@ -7,7 +7,7 @@ import '../datasources/get_facts_datasource.dart';
 class GetFactsRepository implements IGetFactsRepository{
   final IGetFactsDataSource dataSource;
 
-  GetFactsRepository({required this.dataSource});
+  GetFactsRepository(this.dataSource);
 
   @override
   Future<Either<Exception, List<CatFacts>>> getFacts() async {

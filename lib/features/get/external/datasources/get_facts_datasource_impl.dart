@@ -15,7 +15,6 @@ class GetFactsDataSource implements IGetFactsDataSource {
 
     try {
       final response = await uno.get('https://catfact.ninja/fact');
-
       if (response.status == 200) {
         facts.add(
           CatFactsDto.fromMap(response.data),

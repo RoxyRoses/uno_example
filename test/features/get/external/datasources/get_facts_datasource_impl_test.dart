@@ -34,7 +34,6 @@ void main() {
       final result = dataSource.getFacts();
       expect(result, completes);
     }));
-
     test('Should return an error if code its not 200', () async {
       final request = Request(
         headers: const {'test': 'test'},
