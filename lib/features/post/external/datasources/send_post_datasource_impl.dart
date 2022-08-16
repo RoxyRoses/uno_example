@@ -1,6 +1,6 @@
 import 'package:uno/uno.dart';
-import 'package:uno_example/features/get/domain/entities/post_entity.dart';
-import 'package:uno_example/features/get/infra/models/post_entity_dto.dart';
+import 'package:uno_example/features/post/domain/entities/post_entity.dart';
+import 'package:uno_example/features/post/infra/models/post_entity_dto.dart';
 
 import '../../infra/datasources/send_post_datasource.dart';
 

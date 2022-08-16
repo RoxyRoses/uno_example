@@ -73,7 +73,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   const Text('Get with Uno Example:',style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
                   const SizedBox(height: 15),
                   const Text(
-                    'Cat Fact:',
+                    'Cat Fact',
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                   ),
                   const SizedBox(height: 15),

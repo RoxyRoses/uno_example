@@ -25,7 +25,6 @@ class GetFactsDataSource implements IGetFactsDataSource {
     } catch (e) {
       throw Exception(e);
     }
-
     return facts;
   }
 }

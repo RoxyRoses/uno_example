@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:uno/uno.dart';
-import 'package:uno_example/features/get/domain/entities/post_entity.dart';
+import 'package:uno_example/features/post/domain/entities/post_entity.dart';
 import 'package:uno_example/features/get/external/datasources/send_put_datasource_impl.dart';
 
 import '../../../../utils/api_response.dart';

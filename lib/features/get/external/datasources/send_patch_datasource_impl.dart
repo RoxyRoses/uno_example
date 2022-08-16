@@ -1,6 +1,6 @@
 import 'package:uno/uno.dart';
 
-import '../../domain/entities/post_entity.dart';
+import '../../../post/domain/entities/post_entity.dart';
 import '../../infra/datasources/send_patch_datasource.dart';
 
 class SendPatchDataSource implements ISendPatchDataSource {
