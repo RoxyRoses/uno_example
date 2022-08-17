@@ -19,7 +19,7 @@ void main() {
         headers: const {'test': 'test'},
         method: 'get',
         timeout: const Duration(seconds: 30),
-        uri: Uri.parse('https://catfact.ninja/fact'),
+        uri: Uri.parse('https://jsonplaceholder.typicode.com/posts/'),
       );
 
       when((() => uno.get(any()))).thenAnswer(

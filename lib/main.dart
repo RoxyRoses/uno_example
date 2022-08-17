@@ -4,7 +4,7 @@ import 'package:flutter_triple/flutter_triple.dart';
 import 'package:uno_example/app_module.dart';
 import 'package:uno_example/features/get/presentation/getfact_store.dart';
 
-
+import 'features/post/presentation/send_post_store.dart';
 
 void main() {
   runApp(ModularApp(
@@ -44,6 +44,8 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   final store = Modular.get<GetFactStore>();
+  final storeBtn = Modular.get<SendPostStore>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,59 +66,82 @@ class _MyHomePageState extends State<MyHomePage> {
           child: CircularProgressIndicator(),
         ),
         onState: ((_, List state) {
-          return Center(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                children: [
-                  const SizedBox(height: 15),
-
-                  const Text(
-                    'Get with Uno Example:',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+          return SingleChildScrollView(
+            child: Column(
+              children: [
+                const SizedBox(height: 15),
+                const Text(
+                  'Get with Uno Example:',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                ),
+                const SizedBox(height: 15),
+                const Text(
+                  'UserId',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                ),
+                const SizedBox(height: 15),
+                Text(
+                  state[0].userId.toString(),
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 10),
+                const Text(
+                  'Id',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                ),
+                const SizedBox(height: 15),
+                Text(
+                  state[0].id.toString(),
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                const Text(
+                  'Title',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                ),
+                const SizedBox(height: 15),
+                Text(
+                  state[0].title.toString(),
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                const Text(
+                  'Body',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                ),
+                const SizedBox(height: 15),
+                Text(
+                  state[0].body.toString(),
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                ScopedBuilder<SendPostStore, Exception, List<dynamic>>(
+                  store: storeBtn,
+                  onError: (_, Exception? error) {
+                    return const Center(
+                      child: Icon(
+                        Icons.search_off_rounded,
+                        size: 150,
+                      ),
+                    );
+                  },
+                  onLoading: (_) => const Center(
+                    child: CircularProgressIndicator(),
                   ),
-                  const SizedBox(height: 15),
-                  const Text(
-                    'UserId',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                  ),
-                  const SizedBox(height: 15),
-                  Text(
-                    state[0].userId.toString(),
-                    style: const TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                  const SizedBox(height: 10),
-                   const Text(
-                    'Id',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                  ),
-                  const SizedBox(height: 15),
-                  Text(
-                    state[0].id.toString(),
-                    style: const TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                  const SizedBox(height: 10,),
-                   const Text(
-                    'Title',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                  ),
-                  const SizedBox(height: 15),
-                  Text(
-                    state[0].title.toString(),
-                    style: const TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                  const SizedBox(height: 10,),
-                   const Text(
-                    'Body',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                  ),
-                  const SizedBox(height: 15),
-                  Text(
-                    state[0].body.toString(),
-                    style: const TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                ],
-              ),
+                  onState: (context, state) {
+                    return ElevatedButton(
+                        onPressed: () {
+                          storeBtn.sendPost();
+                        }, child: const Text('Post test'));
+                  },
+                )
+              ],
             ),
           );
         }),

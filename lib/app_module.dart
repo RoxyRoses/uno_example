@@ -5,6 +5,10 @@ import 'features/get/external/datasources/get_facts_datasource_impl.dart';
 import 'features/get/infra/implementations/get_facts_repository_impl.dart';
 import 'features/get/infra/implementations/get_facts_usecase_impl.dart';
 import 'features/get/presentation/getfact_store.dart';
+import 'features/post/external/datasources/send_post_datasource_impl.dart';
+import 'features/post/infra/implementations/send_post_repository_impl.dart';
+import 'features/post/infra/implementations/send_post_usecase_impl.dart';
+import 'features/post/presentation/send_post_store.dart';
 import 'main.dart';
 
 class AppModule extends Module{
@@ -14,6 +18,10 @@ class AppModule extends Module{
     Bind((i) => SendGetDataSource(i())),
     Bind((i) => GetFactsRepository(i())),
     Bind((i) => GetFactStore(i())),
+    Bind((i) => SendPostUseCase(i())),
+    Bind((i) => SendPostDataSource(i())),
+    Bind((i) => SendPostRepository(dataSource: i())),
+    Bind((i) => SendPostStore(i())),
     Bind((i) => Uno()),
   ];
 
