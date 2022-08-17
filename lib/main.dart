@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_triple/flutter_triple.dart';
 import 'package:uno_example/app_module.dart';
-import 'package:uno_example/features/get/domain/entities/cat_facts_entity.dart';
 import 'package:uno_example/features/get/presentation/getfact_store.dart';
+
+
 
 void main() {
   runApp(ModularApp(
@@ -49,7 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: const Text('Uno Example'),
       ),
-      body: ScopedBuilder<GetFactStore, Exception, List<CatFacts>>(
+      body: ScopedBuilder<GetFactStore, Exception, List<dynamic>>(
         store: store,
         onError: (_, Exception? error) {
           return const Center(
@@ -70,26 +71,48 @@ class _MyHomePageState extends State<MyHomePage> {
                 children: [
                   const SizedBox(height: 15),
 
-                  const Text('Get with Uno Example:',style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
+                  const Text(
+                    'Get with Uno Example:',
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                  ),
                   const SizedBox(height: 15),
                   const Text(
-                    'Cat Fact',
+                    'UserId',
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                   ),
                   const SizedBox(height: 15),
                   Text(
-                    state[0].fact,
+                    state[0].userId.toString(),
                     style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
-                  const SizedBox(height: 15),
-                  const Text(
-                    'Lenght',
+                  const SizedBox(height: 10),
+                   const Text(
+                    'Id',
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                   ),
                   const SizedBox(height: 15),
-
                   Text(
-                    state[0].length.toString(),
+                    state[0].id.toString(),
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(height: 10,),
+                   const Text(
+                    'Title',
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                  ),
+                  const SizedBox(height: 15),
+                  Text(
+                    state[0].title.toString(),
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(height: 10,),
+                   const Text(
+                    'Body',
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                  ),
+                  const SizedBox(height: 15),
+                  Text(
+                    state[0].body.toString(),
                     style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ],

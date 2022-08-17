@@ -1,30 +1,28 @@
 import 'package:uno/uno.dart';
-import 'package:uno_example/features/get/domain/entities/cat_facts_entity.dart';
 
+import '../../../post/infra/models/post_entity_dto.dart';
 import '../../infra/datasources/get_facts_datasource.dart';
-import '../../infra/models/cat_facts_dto.dart';
 
-class GetFactsDataSource implements IGetFactsDataSource {
-  final Uno uno;
+class SendGetDataSource implements IGetFactsDataSource {
+  late Uno uno;
 
-  GetFactsDataSource(this.uno);
+  SendGetDataSource(this.uno);
 
   @override
-  Future<List<CatFacts>> getFacts() async {
-    List<CatFacts> facts = [];
-
+  Future<List<dynamic>> getFacts() async {
+   
     try {
-      final response = await uno.get('https://catfact.ninja/fact');
+      final response = await uno.get('https://jsonplaceholder.typicode.com/posts');
       if (response.status == 200) {
-        facts.add(
-          CatFactsDto.fromMap(response.data),
-        );
+        final list = ((response.data as List)
+          .map((e) => PostEntityDto.fromMap(e))
+          .toList());
+        return list;
       } else {
         throw Exception();
       }
     } catch (e) {
       throw Exception(e);
     }
-    return facts;
   }
 }

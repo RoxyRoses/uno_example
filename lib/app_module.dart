@@ -5,13 +5,13 @@ import 'features/get/external/datasources/get_facts_datasource_impl.dart';
 import 'features/get/infra/implementations/get_facts_repository_impl.dart';
 import 'features/get/infra/implementations/get_facts_usecase_impl.dart';
 import 'features/get/presentation/getfact_store.dart';
-import 'features/get/presentation/main.dart';
+import 'main.dart';
 
 class AppModule extends Module{
   @override
   List<Bind> get binds => [
     Bind((i) => GetFactsUseCase(i())),
-    Bind((i) => GetFactsDataSource(i())),
+    Bind((i) => SendGetDataSource(i())),
     Bind((i) => GetFactsRepository(i())),
     Bind((i) => GetFactStore(i())),
     Bind((i) => Uno()),
