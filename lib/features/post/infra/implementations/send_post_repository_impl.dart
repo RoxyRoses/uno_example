@@ -3,17 +3,17 @@ import 'package:uno_example/features/post/domain/entities/post_entity.dart';
 import 'package:uno_example/features/post/domain/repositories/send_post_repository.dart';
 import 'package:uno_example/features/post/infra/datasources/send_post_datasource.dart';
 
-class SendPostRepository implements ISendPostRepository{
+class SendPostRepository implements ISendPostRepository {
   final ISendPostDataSource dataSource;
 
   SendPostRepository({required this.dataSource});
   @override
-  Future<Either<Exception, List<PostEntity>>> postTest(PostEntity entity) async {
-     try {
-    final result = await dataSource.postTest(entity);
+  Future<Either<Exception, List<dynamic>>> postTest(
+      PostEntity entity) async {
+    try {
+      final result = await dataSource.postTest(entity);
 
-    return Right(result);
-      
+      return Right(result);
     } catch (e) {
       return Left(Exception());
     }

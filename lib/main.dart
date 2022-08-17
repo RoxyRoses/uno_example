@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_triple/flutter_triple.dart';
+import 'package:uno/uno.dart';
 import 'package:uno_example/app_module.dart';
 import 'package:uno_example/features/get/presentation/getfact_store.dart';
 
+import 'features/post/external/datasources/send_post_datasource_impl.dart';
 import 'features/post/presentation/send_post_store.dart';
 
 void main() {
@@ -48,6 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    var datasource = SendPostDataSource(Uno());
     return Scaffold(
       appBar: AppBar(
         title: const Text('Uno Example'),
@@ -135,12 +138,18 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: CircularProgressIndicator(),
                   ),
                   onState: (context, state) {
-                    return ElevatedButton(
-                        onPressed: () {
-                          storeBtn.sendPost();
-                        }, child: const Text('Post test'));
+                    return Column(
+                      children: [
+                        ElevatedButton(
+                            onPressed: () {
+                              storeBtn.sendPost();
+                            },
+                            child: const Text('Post test')),
+                         const Text('status'),
+                      ],
+                    );
                   },
-                )
+                ),
               ],
             ),
           );
@@ -149,5 +158,3 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
-
-listToObject(List<dynamic> state) {}

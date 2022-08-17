@@ -9,17 +9,18 @@ class SendPostDataSource implements ISendPostDataSource {
   SendPostDataSource(this.uno);
 
   @override
-  Future<List<PostEntity>> postTest(entity) async {
+  Future<List<dynamic>> postTest(entity) async {
     final List<PostEntity> list = [];
+
     try {
       uno
-          .post('https://jsonplaceholder.typicode.com/posts/?title=${entity.title}&body=${entity.body}')
-          .then(
-            (value) async => list.add(
-              PostEntityDto.fromMap(value.data),
-            ),
-          )
-          .catchError((error) {
+          .post(
+              'https://jsonplaceholder.typicode.com/posts/?title=${entity.title}&body=${entity.body}')
+          .then((value) async {
+        list.add(
+          PostEntityDto.fromMap(value.data),
+        );
+      }).catchError((error) {
         if (error.response != null) {
           print(error.response.data);
           print(error.response.status);
