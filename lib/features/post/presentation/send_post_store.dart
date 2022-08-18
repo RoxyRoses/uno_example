@@ -3,9 +3,9 @@ import 'package:mobx_triple/mobx_triple.dart';
 import '../../post/domain/entities/post_entity.dart';
 import '../domain/usecases/send_post_usecase.dart';
 
-class SendPostStore extends MobXStore<Exception, List<dynamic>> {
+class SendPostStore extends MobXStore<Exception, List<PostEntity>> {
   final ISendPost usecase;
-  SendPostStore(this.usecase) : super(<dynamic>[]);
+  SendPostStore(this.usecase) :  super(<PostEntity>[]);
 
   Future<void> sendPost() async {
   final entity = PostEntity(title: 'teste', body: 'body');

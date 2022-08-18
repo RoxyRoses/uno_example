@@ -8,7 +8,7 @@ class SendPostRepository implements ISendPostRepository {
 
   SendPostRepository({required this.dataSource});
   @override
-  Future<Either<Exception, List<dynamic>>> postTest(
+  Future<Either<Exception, List<PostEntity>>> postTest(
       PostEntity entity) async {
     try {
       final result = await dataSource.postTest(entity);
