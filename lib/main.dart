@@ -230,6 +230,13 @@ class _MyHomePageState extends State<MyHomePage> {
                             },
                             child: const Text('Put test')),
                         Text('http status response:${state.status.toString()}'),
+                        const SizedBox(
+                          height: 15,
+                        ),
+                        const Text('API powered by {JSON} Placeholder',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ))
                       ],
                     );
                   },
@@ -240,13 +247,5 @@ class _MyHomePageState extends State<MyHomePage> {
         }),
       ),
     );
-  }
-}
-
-changeText(String text) {
-  if (text != '') {
-    return text;
-  } else {
-    return 'status';
   }
 }

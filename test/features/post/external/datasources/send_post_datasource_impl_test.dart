@@ -14,25 +14,26 @@ void main() {
   final uno = MockUno();
   final dataSource = SendPostDataSource(uno);
   final entity = RequestEntity(body: 'Hello', title: 'post test');
+  final request = Request(
+    headers: const {'test': 'test'},
+    method: 'post',
+    timeout: const Duration(seconds: 30),
+    uri: Uri.parse(
+        'https://jsonplaceholder.typicode.com/posts/?title=${entity.title}&body=${entity.body}'),
+  );
 
   group(SendPostDataSource, () {
     test('Should use a post method', (() async {
-      final request = Request(
-        headers: const {'test': 'test'},
-        method: 'post',
-        timeout: const Duration(seconds: 30),
-        uri: Uri.parse('https://jsonplaceholder.typicode.com/posts'),
-      );
-
       when((() => uno.post(any()))).thenAnswer(
-        (_) async => Response(
+        (_) async =>Response(
           headers: const {'test': 'test'},
           request: request,
-          status: 200,
+          status: 201,
           data: jsonDecode(postResponse),
         ),
       );
-      expect(dataSource.postTest(entity), completes);
+      var response = dataSource.postTest(entity);
+      expect(response, completes);
     }));
   });
 }

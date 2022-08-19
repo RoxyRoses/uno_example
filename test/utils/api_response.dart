@@ -11,3 +11,6 @@ const postResponse = """{
     "id": 101
 }""";
 
+const putResponse = """{
+  "id": 1
+  }""";
