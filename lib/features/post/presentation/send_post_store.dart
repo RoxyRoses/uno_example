@@ -1,5 +1,5 @@
 import 'package:mobx_triple/mobx_triple.dart';
-import 'package:uno_example/features/get/domain/entities/post_entity.dart';
+import 'package:uno_example/features/get/domain/entities/request_entity.dart';
 
 import '../domain/usecases/send_post_usecase.dart';
 

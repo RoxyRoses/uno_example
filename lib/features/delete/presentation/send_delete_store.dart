@@ -1,7 +1,7 @@
 import 'package:mobx_triple/mobx_triple.dart';
 import 'package:uno_example/features/delete/domain/usecases/send_delete_usecase.dart';
 
-import '../../get/domain/entities/post_entity.dart';
+import '../../get/domain/entities/request_entity.dart';
 
 
 class SendDeleteStore extends MobXStore<Exception, List<RequestEntity>> {

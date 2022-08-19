@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import '../../domain/entities/post_entity.dart';
+import '../../domain/entities/request_entity.dart';
 
 class PostEntityDto extends RequestEntity {
   PostEntityDto({required super.title, required super.body, super.id, super.userId, super.status});

@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_triple/flutter_triple.dart';
 import 'package:uno_example/app_module.dart';
-import 'package:uno_example/features/get/domain/entities/post_entity.dart';
+import 'package:uno_example/features/get/domain/entities/request_entity.dart';
 import 'package:uno_example/features/get/presentation/getfact_store.dart';
 import 'package:uno_example/features/patch/presentation/send_patch_store.dart';
 
 import 'features/delete/presentation/send_delete_store.dart';
 import 'features/post/presentation/send_post_store.dart';
+import 'features/put/presentations/send_put_store.dart';
 
 void main() {
   runApp(ModularApp(
@@ -51,6 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
   final storeBtnPost = Modular.get<SendPostStore>();
   final storeBtnDelete = Modular.get<SendDeleteStore>();
   final storeBtnPatch = Modular.get<SendPatchStore>();
+  final storeBtnPut = Modular.get<SendPutStore>();
 
 
   @override
@@ -210,7 +212,33 @@ class _MyHomePageState extends State<MyHomePage> {
                     );
                   },
                 ),
-              ],
+               ScopedBuilder<SendPutStore, Exception, List<RequestEntity>>(
+                  store: storeBtnPut,
+                  onError: (_, Exception? error) {
+                    return const Center(
+                      child: Icon(
+                        Icons.search_off_rounded,
+                        size: 150,
+                      ),
+                    );
+                  },
+                  onLoading: (_) => const Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                  onState: (context, state) {
+                    return Column(
+                      children: [
+                        ElevatedButton(
+                            onPressed: () {
+                              storeBtnPut.sendPut();
+                              list = state.first.status.toString();
+                            },
+                            child: const Text('Put test')),
+                        Text('http status response:$list'),
+                      ],
+                    );
+                  },
+                ),],
             ),
           );
         }),

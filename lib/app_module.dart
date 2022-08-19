@@ -17,33 +17,40 @@ import 'features/post/external/datasources/send_post_datasource_impl.dart';
 import 'features/post/infra/implementations/send_post_repository_impl.dart';
 import 'features/post/infra/implementations/send_post_usecase_impl.dart';
 import 'features/post/presentation/send_post_store.dart';
+import 'features/put/external/datasources/send_put_datasource_impl.dart';
+import 'features/put/infra/implementations/send_put_repository_impl.dart';
+import 'features/put/infra/implementations/send_put_usecase_impl.dart';
+import 'features/put/presentations/send_put_store.dart';
 import 'main.dart';
 
-class AppModule extends Module{
+class AppModule extends Module {
   @override
   List<Bind> get binds => [
-    Bind((i) => GetFactsUseCase(i())),
-    Bind((i) => SendGetDataSource(i())),
-    Bind((i) => GetFactsRepository(i())),
-    Bind((i) => GetFactStore(i())),
-    Bind((i) => SendPostUseCase(i())),
-    Bind((i) => SendPostDataSource(i())),
-    Bind((i) => SendPostRepository(dataSource: i())),
-    Bind((i) => SendPostStore(i())),
-    Bind((i) => SendDeleteUseCase(i())),
-    Bind((i) => SendDeleteDataSource(i())),
-    Bind((i) => SendDeleteRepository(i())),
-    Bind((i) => SendDeleteStore(i())),
-     Bind((i) => SendPatchUseCase(i())),
-    Bind((i) => SendPatchDataSource(i())),
-    Bind((i) => SendPatchRepository(i())),
-    Bind((i) => SendPatchStore(i())),
-    Bind((i) => Uno()),
-  ];
+        Bind((i) => GetFactsUseCase(i())),
+        Bind((i) => SendGetDataSource(i())),
+        Bind((i) => GetFactsRepository(i())),
+        Bind((i) => GetFactStore(i())),
+        Bind((i) => SendPostUseCase(i())),
+        Bind((i) => SendPostDataSource(i())),
+        Bind((i) => SendPostRepository(i())),
+        Bind((i) => SendPostStore(i())),
+        Bind((i) => SendDeleteUseCase(i())),
+        Bind((i) => SendDeleteDataSource(i())),
+        Bind((i) => SendDeleteRepository(i())),
+        Bind((i) => SendDeleteStore(i())),
+        Bind((i) => SendPatchUseCase(i())),
+        Bind((i) => SendPatchDataSource(i())),
+        Bind((i) => SendPatchRepository(i())),
+        Bind((i) => SendPatchStore(i())),
+        Bind((i) => SendPutUseCase(i())),
+        Bind((i) => SendPutDataSource(i())),
+        Bind((i) => SendPutRepository(i())),
+        Bind((i) => SendPutStore(i())),
+        Bind((i) => Uno()),
+      ];
 
   @override
   List<ModularRoute> get routes => [
-        ChildRoute(Modular.initialRoute,child: (_, __) => const MyApp()),
+        ChildRoute(Modular.initialRoute, child: (_, __) => const MyApp()),
       ];
-
 }

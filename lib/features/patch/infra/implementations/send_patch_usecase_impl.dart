@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 
-import '../../../get/domain/entities/post_entity.dart';
+import '../../../get/domain/entities/request_entity.dart';
 import '../../domain/repositories/send_patch_repository.dart';
 import '../../domain/usecases/send_patch_usecase.dart';
 

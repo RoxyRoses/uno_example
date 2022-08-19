@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 
-import '../../../get/domain/entities/post_entity.dart';
+import '../../../get/domain/entities/request_entity.dart';
 import '../../domain/repositories/send_delete_repository.dart';
 import '../datasources/send_delete_datasource.dart';
 

@@ -1,5 +1,5 @@
 import 'package:uno/uno.dart';
-import 'package:uno_example/features/get/domain/entities/post_entity.dart';
+import 'package:uno_example/features/get/domain/entities/request_entity.dart';
 
 import '../../infra/datasources/send_post_datasource.dart';
 

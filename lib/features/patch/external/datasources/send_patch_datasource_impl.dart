@@ -1,6 +1,6 @@
 import 'package:uno/uno.dart';
 
-import '../../../get/domain/entities/post_entity.dart';
+import '../../../get/domain/entities/request_entity.dart';
 import '../../infra/datasources/send_patch_datasource.dart';
 
 
