@@ -10,7 +10,7 @@ class SendPostUseCase implements ISendPost{
   SendPostUseCase(this._repository);
 
   @override
-  Future<Either<Exception, List<RequestEntity>>> postTest(RequestEntity entity) {
+  Future<Either<Exception, RequestEntity>> postTest(RequestEntity entity) {
     var results = _repository.postTest(entity);
     return results;
   }

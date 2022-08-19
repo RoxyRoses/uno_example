@@ -7,7 +7,7 @@ class GetFactStore extends MobXStore<Exception, List<dynamic>> {
 
   GetFactStore(this.usecase) : super(<dynamic>[]);
 
-  Future<void> getCatFacts() async {
+  Future<void> getFacts() async {
     setLoading(true);
     await Future.delayed(const Duration(seconds: 2));
     final result = await usecase.getFacts();

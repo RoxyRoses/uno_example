@@ -45,7 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
-    store.getCatFacts();
+    store.getFacts();
   }
 
   final store = Modular.get<GetFactStore>();
@@ -131,7 +131,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 const SizedBox(
                   height: 10,
                 ),
-                ScopedBuilder<SendPostStore, Exception, List<dynamic>>(
+                ScopedBuilder<SendPostStore, Exception, RequestEntity>(
                   store: storeBtnPost,
                   onError: (_, Exception? error) {
                     return const Center(
@@ -150,10 +150,9 @@ class _MyHomePageState extends State<MyHomePage> {
                         ElevatedButton(
                             onPressed: () {
                               storeBtnPost.sendPost();
-                              list = state.first.status.toString();
                             },
                             child: const Text('Post test')),
-                        Text('http status response:$list'),
+                        Text('http status response:${state.status}'),
                       ],
                     );
                   },
