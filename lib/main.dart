@@ -54,7 +54,6 @@ class _MyHomePageState extends State<MyHomePage> {
   final storeBtnPatch = Modular.get<SendPatchStore>();
   final storeBtnPut = Modular.get<SendPutStore>();
 
-
   @override
   Widget build(BuildContext context) {
     var list = '';
@@ -157,7 +156,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     );
                   },
                 ),
-                ScopedBuilder<SendDeleteStore, Exception, List<dynamic>>(
+                ScopedBuilder<SendDeleteStore, Exception, RequestEntity>(
                   store: storeBtnDelete,
                   onError: (_, Exception? error) {
                     return const Center(
@@ -176,10 +175,9 @@ class _MyHomePageState extends State<MyHomePage> {
                         ElevatedButton(
                             onPressed: () {
                               storeBtnDelete.sendDelete();
-                              list = state.first.status.toString();
                             },
                             child: const Text('Delete test')),
-                        Text('http status response:$list'),
+                        Text('http status response:${state.status.toString()}'),
                       ],
                     );
                   },
@@ -211,7 +209,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     );
                   },
                 ),
-               ScopedBuilder<SendPutStore, Exception, List<RequestEntity>>(
+                ScopedBuilder<SendPutStore, Exception, List<RequestEntity>>(
                   store: storeBtnPut,
                   onError: (_, Exception? error) {
                     return const Center(
@@ -237,7 +235,8 @@ class _MyHomePageState extends State<MyHomePage> {
                       ],
                     );
                   },
-                ),],
+                ),
+              ],
             ),
           );
         }),

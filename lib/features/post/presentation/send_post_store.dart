@@ -16,7 +16,7 @@ class SendPostStore extends StreamStore<Exception, RequestEntity> {
     result.fold((l) {
       setError(l);
     }, (r) {
-      update(state.copyWith(status: r.status));
+      update(r);
     });
     setLoading(false);
   }

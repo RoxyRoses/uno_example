@@ -10,7 +10,7 @@ class SendDeleteUseCase implements ISendDelete {
   SendDeleteUseCase(this._repository);
 
   @override
-  Future<Either<Exception, List<RequestEntity>>> sendDelete(RequestEntity entity) {
+  Future<Either<Exception, RequestEntity>> sendDelete(RequestEntity entity) {
     var results = _repository.sendDelete(entity);
     return results;
   }
