@@ -208,7 +208,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     );
                   },
                 ),
-                ScopedBuilder<SendPutStore, Exception, List<RequestEntity>>(
+                ScopedBuilder<SendPutStore, Exception, RequestEntity>(
                   store: storeBtnPut,
                   onError: (_, Exception? error) {
                     return const Center(
@@ -227,10 +227,9 @@ class _MyHomePageState extends State<MyHomePage> {
                         ElevatedButton(
                             onPressed: () {
                               storeBtnPut.sendPut();
-                              list = state.first.status.toString();
                             },
                             child: const Text('Put test')),
-                        Text('http status response:$list'),
+                        Text('http status response:${state.status.toString()}'),
                       ],
                     );
                   },

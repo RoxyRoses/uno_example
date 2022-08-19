@@ -11,19 +11,7 @@ class SendPutRepository implements ISendPutRepository {
   SendPutRepository(this.dataSource);
   
   @override
-  Future<Either<Exception, List<RequestEntity>>> postTest(
-      RequestEntity entity) async {
-    try {
-      final result = await dataSource.sendPut(entity);
-
-      return Right(result);
-    } catch (e) {
-      return Left(Exception());
-    }
-  }
-  
-  @override
-  Future<Either<Exception, List<RequestEntity>>> sendPut(RequestEntity entity)async  {
+  Future<Either<Exception, RequestEntity>> sendPut(RequestEntity entity)async  {
      try {
       final result = await dataSource.sendPut(entity);
 

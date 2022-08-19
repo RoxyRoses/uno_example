@@ -11,7 +11,7 @@ class SendPutUseCase implements ISendPut{
   SendPutUseCase(this._repository);
 
   @override
-  Future<Either<Exception, List<RequestEntity>>> sendPut(RequestEntity entity) {
+  Future<Either<Exception, RequestEntity>> sendPut(RequestEntity entity) {
     var results = _repository.sendPut(entity);
     return results;
   }
