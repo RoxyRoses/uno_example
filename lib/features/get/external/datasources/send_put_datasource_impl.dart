@@ -1,11 +1,11 @@
 import 'package:uno/uno.dart';
 
-import '../../../post/domain/entities/post_entity.dart';
+import '../../domain/entities/post_entity.dart';
 import '../../infra/datasources/send_put_datasource.dart';
 
 class SendPutDataSource implements ISendPutDataSource{
   late Uno uno;
-  final entity = PostEntity(body: 'Hello', title: 'post test', id: 1);
+  final entity = RequestEntity(body: 'Hello', title: 'post test', id: 1);
 
   SendPutDataSource(this.uno);
 

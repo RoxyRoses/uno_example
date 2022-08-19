@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_triple/flutter_triple.dart';
 import 'package:uno_example/app_module.dart';
+import 'package:uno_example/features/get/domain/entities/post_entity.dart';
 import 'package:uno_example/features/get/presentation/getfact_store.dart';
+import 'package:uno_example/features/patch/presentation/send_patch_store.dart';
 
 import 'features/delete/presentation/send_delete_store.dart';
 import 'features/post/presentation/send_post_store.dart';
@@ -48,6 +50,8 @@ class _MyHomePageState extends State<MyHomePage> {
   final store = Modular.get<GetFactStore>();
   final storeBtnPost = Modular.get<SendPostStore>();
   final storeBtnDelete = Modular.get<SendDeleteStore>();
+  final storeBtnPatch = Modular.get<SendPatchStore>();
+
 
   @override
   Widget build(BuildContext context) {
@@ -143,10 +147,8 @@ class _MyHomePageState extends State<MyHomePage> {
                       children: [
                         ElevatedButton(
                             onPressed: () {
-                              
-                            storeBtnPost.sendPost();
-                            list =  state.first.status.toString();
-                           
+                              storeBtnPost.sendPost();
+                              list = state.first.status.toString();
                             },
                             child: const Text('Post test')),
                         Text('http status response:$list'),
@@ -154,7 +156,6 @@ class _MyHomePageState extends State<MyHomePage> {
                     );
                   },
                 ),
-              
                 ScopedBuilder<SendDeleteStore, Exception, List<dynamic>>(
                   store: storeBtnDelete,
                   onError: (_, Exception? error) {
@@ -173,17 +174,43 @@ class _MyHomePageState extends State<MyHomePage> {
                       children: [
                         ElevatedButton(
                             onPressed: () {
-                              
-                            storeBtnDelete.sendDelete();
-                            list =  state.first.status.toString();
-                           
+                              storeBtnDelete.sendDelete();
+                              list = state.first.status.toString();
                             },
                             child: const Text('Delete test')),
                         Text('http status response:$list'),
                       ],
                     );
                   },
-                ),],
+                ),
+                ScopedBuilder<SendPatchStore, Exception, List<RequestEntity>>(
+                  store: storeBtnPatch,
+                  onError: (_, Exception? error) {
+                    return const Center(
+                      child: Icon(
+                        Icons.search_off_rounded,
+                        size: 150,
+                      ),
+                    );
+                  },
+                  onLoading: (_) => const Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                  onState: (context, state) {
+                    return Column(
+                      children: [
+                        ElevatedButton(
+                            onPressed: () {
+                              storeBtnPatch.sendPatch();
+                              list = state.first.status.toString();
+                            },
+                            child: const Text('Patch test')),
+                        Text('http status response:$list'),
+                      ],
+                    );
+                  },
+                ),
+              ],
             ),
           );
         }),
@@ -192,11 +219,10 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
-changeText(String text){
-  if(text != ''){
+changeText(String text) {
+  if (text != '') {
     return text;
-  }
-  else{
+  } else {
     return 'status';
   }
 }

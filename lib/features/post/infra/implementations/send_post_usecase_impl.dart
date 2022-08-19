@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:uno_example/features/post/domain/entities/post_entity.dart';
+import 'package:uno_example/features/get/domain/entities/post_entity.dart';
 
 import '../../domain/repositories/send_post_repository.dart';
 import '../../domain/usecases/send_post_usecase.dart';
@@ -10,7 +10,7 @@ class SendPostUseCase implements ISendPost{
   SendPostUseCase(this._repository);
 
   @override
-  Future<Either<Exception, List<PostEntity>>> postTest(PostEntity entity) {
+  Future<Either<Exception, List<RequestEntity>>> postTest(RequestEntity entity) {
     var results = _repository.postTest(entity);
     return results;
   }

@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:uno/uno.dart';
-import 'package:uno_example/features/post/domain/entities/post_entity.dart';
+import 'package:uno_example/features/get/domain/entities/post_entity.dart';
 import 'package:uno_example/features/post/external/datasources/send_post_datasource_impl.dart';
 
 import '../../../../utils/api_response.dart';
@@ -13,7 +13,7 @@ class MockUno extends Mock implements Uno {}
 void main() {
   final uno = MockUno();
   final dataSource = SendPostDataSource(uno);
-  final entity = PostEntity(body: 'Hello', title: 'post test');
+  final entity = RequestEntity(body: 'Hello', title: 'post test');
 
   group(SendPostDataSource, () {
     test('Should use a post method', (() async {

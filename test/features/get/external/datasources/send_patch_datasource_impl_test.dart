@@ -3,8 +3,8 @@ import 'dart:convert';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:uno/uno.dart';
-import 'package:uno_example/features/post/domain/entities/post_entity.dart';
-import 'package:uno_example/features/get/external/datasources/send_patch_datasource_impl.dart';
+import 'package:uno_example/features/get/domain/entities/post_entity.dart';
+import 'package:uno_example/features/patch/external/datasources/send_patch_datasource_impl.dart';
 
 import '../../../../utils/api_response.dart';
 
@@ -13,7 +13,7 @@ class MockUno extends Mock implements Uno {}
 void main() {
   final uno = MockUno();
   final dataSource = SendPatchDataSource(uno);
-   final entity = PostEntity(body: 'Hello', title: 'post test', id: 1);
+   final entity = RequestEntity(body: 'Hello', title: 'post test', id: 1);
 
   group(SendPatchDataSource, () {
     test('Should use a patch method', (() async {

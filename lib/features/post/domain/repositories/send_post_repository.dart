@@ -1,7 +1,6 @@
 import 'package:dartz/dartz.dart';
-
-import '../entities/post_entity.dart';
+import 'package:uno_example/features/get/domain/entities/post_entity.dart';
 
 abstract class ISendPostRepository{
-  Future<Either<Exception, List<PostEntity>>> postTest(PostEntity entity);
+  Future<Either<Exception, List<RequestEntity>>> postTest(RequestEntity entity);
 }

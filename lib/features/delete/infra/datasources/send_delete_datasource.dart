@@ -1,5 +1,6 @@
-import '../../../post/domain/entities/post_entity.dart';
+
+import '../../../get/domain/entities/post_entity.dart';
 
 abstract class ISendDeleteDataSource {
-  Future<List<PostEntity>> sendDelete(PostEntity entity);
+  Future<List<RequestEntity>> sendDelete(RequestEntity entity);
 }

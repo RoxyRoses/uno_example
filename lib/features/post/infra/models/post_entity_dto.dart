@@ -1,8 +1,9 @@
 import 'dart:convert';
 
-import '../../domain/entities/post_entity.dart';
+import '../../../get/domain/entities/post_entity.dart';
 
-class PostEntityDto extends PostEntity {
+
+class PostEntityDto extends RequestEntity {
   PostEntityDto({required super.title, required super.body, super.id, super.userId, super.status});
 
   factory PostEntityDto.fromMap(Map<String, dynamic> map) {
