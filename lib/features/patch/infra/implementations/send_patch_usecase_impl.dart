@@ -11,7 +11,7 @@ class SendPatchUseCase implements ISendPatchUseCase{
   SendPatchUseCase(this._repository);
 
   @override
-  Future<Either<Exception, List<RequestEntity>>> sendPatch(entity) async {
+  Future<Either<Exception, RequestEntity>> sendPatch(entity) async {
     var results = _repository.sendPatch(entity);
     return results;
   }

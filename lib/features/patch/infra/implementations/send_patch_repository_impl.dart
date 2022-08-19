@@ -11,7 +11,7 @@ class SendPatchRepository implements ISendPatchRepository {
   SendPatchRepository(this.dataSource);
 
   @override
-  Future<Either<Exception, List<RequestEntity>>> sendPatch(RequestEntity entity) async {
+  Future<Either<Exception, RequestEntity>> sendPatch(RequestEntity entity) async {
     try {
       final result = await dataSource.sendPatch(entity);
 

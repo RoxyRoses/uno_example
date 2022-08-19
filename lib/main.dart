@@ -182,7 +182,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     );
                   },
                 ),
-                ScopedBuilder<SendPatchStore, Exception, List<RequestEntity>>(
+                ScopedBuilder<SendPatchStore, Exception, RequestEntity>(
                   store: storeBtnPatch,
                   onError: (_, Exception? error) {
                     return const Center(
@@ -201,10 +201,9 @@ class _MyHomePageState extends State<MyHomePage> {
                         ElevatedButton(
                             onPressed: () {
                               storeBtnPatch.sendPatch();
-                              list = state.first.status.toString();
                             },
                             child: const Text('Patch test')),
-                        Text('http status response:$list'),
+                        Text('http status response:${state.status.toString()}'),
                       ],
                     );
                   },

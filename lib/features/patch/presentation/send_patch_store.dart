@@ -3,9 +3,9 @@ import 'package:uno_example/features/get/domain/entities/request_entity.dart';
 import 'package:uno_example/features/patch/domain/usecases/send_patch_usecase.dart';
 
 
-class SendPatchStore extends MobXStore<Exception, List<RequestEntity>> {
+class SendPatchStore extends MobXStore<Exception, RequestEntity> {
   final ISendPatchUseCase usecase;
-  SendPatchStore(this.usecase) :  super(<RequestEntity>[]);
+  SendPatchStore(this.usecase) :  super(RequestEntity(title: '', body: ''));
 
   Future<void> sendPatch() async {
   final entity = RequestEntity(title: 'teste', body: 'body');

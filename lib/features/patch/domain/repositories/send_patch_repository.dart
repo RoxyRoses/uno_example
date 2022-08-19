@@ -3,5 +3,5 @@ import 'package:uno_example/features/get/domain/entities/request_entity.dart';
 
 
 abstract class ISendPatchRepository {
-  Future<Either<Exception, List<RequestEntity>>> sendPatch(RequestEntity entity);
+  Future<Either<Exception, RequestEntity>> sendPatch(RequestEntity entity);
 }
