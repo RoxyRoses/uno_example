@@ -3,11 +3,11 @@ import 'dart:convert';
 import '../../../get/domain/entities/request_entity.dart';
 
 
-class PostEntityDto extends RequestEntity {
-  PostEntityDto({required super.title, required super.body, super.id, super.userId, super.status});
+class RequestEntityDto extends RequestEntity {
+  RequestEntityDto({required super.title, required super.body, super.id, super.userId, super.status});
 
-  factory PostEntityDto.fromMap(Map<String, dynamic> map) {
-    return PostEntityDto(
+  factory RequestEntityDto.fromMap(Map<String, dynamic> map) {
+    return RequestEntityDto(
       title: map['title'] ?? '',
       body: map['body'] ?? '',
       id: map['id'] ?? 0,
@@ -28,7 +28,7 @@ class PostEntityDto extends RequestEntity {
 
   String toJson() => json.encode(toMap());
 
-  factory PostEntityDto.fromJson(String source) =>
-      PostEntityDto.fromMap(json.decode(source));
+  factory RequestEntityDto.fromJson(String source) =>
+      RequestEntityDto.fromMap(json.decode(source));
 }
 

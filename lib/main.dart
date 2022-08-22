@@ -3,7 +3,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_triple/flutter_triple.dart';
 import 'package:uno_example/app_module.dart';
 import 'package:uno_example/features/get/domain/entities/request_entity.dart';
-import 'package:uno_example/features/get/presentation/getfact_store.dart';
+import 'package:uno_example/features/get/presentation/send_get_store.dart';
 import 'package:uno_example/features/patch/presentation/send_patch_store.dart';
 
 import 'features/delete/presentation/send_delete_store.dart';
@@ -56,7 +56,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    var list = '';
     return Scaffold(
       appBar: AppBar(
         title: const Text('Uno Example'),

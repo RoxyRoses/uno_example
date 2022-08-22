@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:uno/uno.dart';
-import 'package:uno_example/features/get/external/datasources/get_facts_datasource_impl.dart';
+import 'package:uno_example/features/get/external/datasources/send_get_datasource_impl.dart';
 
 import '../../../../utils/api_response.dart';
 
@@ -31,7 +31,7 @@ void main() {
         ),
       );
 
-      final result = dataSource.getFacts();
+      final result = dataSource.sendGet();
       expect(result, completes);
     }));
   });
